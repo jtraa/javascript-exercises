@@ -1,0 +1,22 @@
+[
+
+    {
+        "id": 1,
+        "name": "John Doe",
+        "company": "123 Designs",
+        "phone": "444-555-6666"
+    },
+    {
+        "id": 2,
+        "name": "Steve Smith",
+        "company": "Hello Productions",
+        "phone": "222-786-6666"
+    },
+    {
+        "id": 3,
+        "name": "Jelle Traa",
+        "company": "RentADude",
+        "phone": "0624842264"
+    }
+
+]
