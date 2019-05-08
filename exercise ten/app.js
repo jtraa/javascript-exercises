@@ -1,36 +1,33 @@
-document.querySelector('.get-jokes').addEventListener('click',
- getJokes);
+// async function myFunc(){
+//     const promise = new Promise((resolve, reject) => {
+//     setTimeout(() => resolve('Hello'), 1000);
+//     });
 
-function getJokes(e){
-    const number = document.querySelector('input[type="number"]').value;
+//     const error = false;
+    
+//     if(!error){
+//         const res = await promise; // wait until promise is resolved
+//         return res;
+//     }else {
+//         await Promise.reject(new Error('Something went wrong'));
+ 
+//     }
 
-    const xhr = new XMLHttpRequest();
+// }
 
-    xhr.open('GET', `http://api.icndb.com/jokes/random/${number}`, true);
+// myFunc()
+//     .then(res => console.log(res))
+//     .catch(err => console.log(err));
 
-    xhr.onload = function() {
-        if(this.status === 200) {
-            const response = JSON.parse(this.responseText);
-            console.log(response);
+async function getUsers() {
+    //await response of the fetch call
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
 
-            let output = '';
+    //Only proceed once its resolved
+    const data = await response.json();
 
-            if(response.type === 'success'){
-                response.value.forEach(function(joke){
-                output += `<li> ${joke.joke}</li>`;
-                                  
-                });
-            }else{
-                output += '<li>Something went wrong</li>';
-            }
-            document.querySelector('.jokes').innerHTML = output;
-        }
-        
-        
-    }
-
-    xhr.send();
-
-    e.preventDefault();
+    //Only proceed once second promise is resolved
+    return data;
 }
 
+getUsers().then(users => console.log(users));
